@@ -160,7 +160,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        L"Segoe UI"
    );
 
-   htext = CreateWindowW(L"STATIC", L"  Является ли отношение функцией", WS_CHILD | WS_VISIBLE | WS_BORDER,
+   htext = CreateWindowW(L"STATIC", L"  РЇРІР»СЏРµС‚СЃСЏ Р»Рё РѕС‚РЅРѕС€РµРЅРёРµ С„СѓРЅРєС†РёРµР№", WS_CHILD | WS_VISIBLE | WS_BORDER,
        50, 10, 400, 30, hWnd, NULL, hInstance, NULL);
 
    hEditSize = CreateWindowW(L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_BORDER,
@@ -169,7 +169,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hEditRelation = CreateWindowW(L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE,
        130, 90, 700, 250, hWnd, NULL, hInstance, NULL);
 
-   hButton = CreateWindowW(L"BUTTON", L"Определить", WS_CHILD | WS_VISIBLE,
+   hButton = CreateWindowW(L"BUTTON", L"РћРїСЂРµРґРµР»РёС‚СЊ", WS_CHILD | WS_VISIBLE,
        130, 350, 100, 40, hWnd, (HMENU)1, hInstance, NULL);
 
    hOutput = CreateWindowW(L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_LEFT | ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY,
@@ -206,7 +206,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
             int n = 0, m = 0;
             if (swscanf_s(bufferSize, L"%d %d", &n, &m) != 2 || n <= 0 || m <= 0) {
-                SetWindowTextW(hOutput, L"Ошибка: введите корректные размеры n и m");
+                SetWindowTextW(hOutput, L"РћС€РёР±РєР°: РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Рµ СЂР°Р·РјРµСЂС‹ n Рё m");
                 break;
             }
 
@@ -225,20 +225,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
             }
 
-            wstring debugInfo = L"Матрица:\r\n";
+            wstring debugInfo = L"РњР°С‚СЂРёС†Р°:\r\n";
             for (const auto& row : matrix) {
                 debugInfo += row + L"\r\n";
             }
 
             if ((int)matrix.size() != n) {
-                debugInfo += L"\r\nОшибка: количество строк матрицы не совпадает с n";
+                debugInfo += L"\r\nРћС€РёР±РєР°: РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє РјР°С‚СЂРёС†С‹ РЅРµ СЃРѕРІРїР°РґР°РµС‚ СЃ n";
                 SetWindowTextW(hOutput, debugInfo.c_str());
                 break;
             }
 
             bool func = isFunctionMatrix(matrix, n, m);
-            debugInfo += L"\r\nРезультат: ";
-            debugInfo += func ? L"отношение функция" : L"отношение не функция";
+            debugInfo += L"\r\nР РµР·СѓР»СЊС‚Р°С‚: ";
+            debugInfo += func ? L"РѕС‚РЅРѕС€РµРЅРёРµ С„СѓРЅРєС†РёСЏ" : L"РѕС‚РЅРѕС€РµРЅРёРµ РЅРµ С„СѓРЅРєС†РёСЏ";
 
             SetWindowTextW(hOutput, debugInfo.c_str());
         }
@@ -252,7 +252,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             SelectObject(hdc, hFontOutput); 
 
-            TextOutW(hdc, 10, 50, L"Размер nxm", lstrlenW(L"Размер nxm"));
+            TextOutW(hdc, 10, 50, L"Р Р°Р·РјРµСЂ nxm", lstrlenW(L"Р Р°Р·РјРµСЂ nxm"));
             TextOutW(hdc, 40, 90, L"nxm", lstrlenW(L"nxm"));
             EndPaint(hWnd, &ps);
         }
